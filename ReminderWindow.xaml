@@ -1,0 +1,32 @@
+<Window x:Class="DailyReminder.ReminderWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="桌面待办提醒" Width="1200" Height="800"
+        WindowStyle="None" AllowsTransparency="True" Background="Transparent"
+        ResizeMode="NoResize" ShowInTaskbar="False" ShowActivated="False"
+        Topmost="True" FontFamily="{StaticResource AppFont}"
+        Loaded="Window_Loaded" MouseLeftButtonUp="Window_MouseLeftButtonUp">
+    <Canvas x:Name="DesktopCanvas">
+        <Border x:Name="FloatingReminder" Padding="20" Background="#01000000"
+                RenderTransformOrigin="0.5,0.5" Cursor="Hand">
+            <Border.RenderTransform>
+                <ScaleTransform x:Name="EntranceScale" ScaleX="1" ScaleY="1"/>
+            </Border.RenderTransform>
+            <StackPanel>
+                <TextBlock x:Name="TimeText" FontSize="16" TextAlignment="Center"
+                           Foreground="#7DD3FC" FontWeight="SemiBold" Margin="0,0,0,12"/>
+                <TextBox x:Name="TitleText" Background="Transparent" BorderThickness="0"
+                         Foreground="White" TextAlignment="Center" TextWrapping="Wrap"
+                         IsReadOnly="True" IsHitTestVisible="False" FontWeight="Bold">
+                    <TextBox.Template>
+                        <ControlTemplate TargetType="TextBox">
+                            <ScrollViewer x:Name="PART_ContentHost" Focusable="False"/>
+                        </ControlTemplate>
+                    </TextBox.Template>
+                </TextBox>
+                <TextBlock Text="点击文字收起" Foreground="#C2D4E6" Opacity="0.8"
+                           FontSize="11" TextAlignment="Center" Margin="0,16,0,0"/>
+            </StackPanel>
+        </Border>
+    </Canvas>
+</Window>
